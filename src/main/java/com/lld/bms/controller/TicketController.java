@@ -4,16 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.lld.bms.dto.TicketReqDTO;
 import com.lld.bms.models.Ticket;
 import com.lld.bms.service.TicketService;
 
+@RestController
 public class TicketController {
 	
 	@Autowired
@@ -26,10 +23,10 @@ public class TicketController {
 		return ResponseEntity.ok(savedTicket);
 	}
 	
-	@GetMapping("/cities")
-	public ResponseEntity<List<Ticket>> getAllCities() {
-		List<Ticket> cities = ticketService.getTickets();
-		return ResponseEntity.ok(cities);
+	@GetMapping("/tickets")
+	public ResponseEntity<List<Ticket>> getAllTickets() {
+		List<Ticket> tickets = ticketService.getTickets();
+		return ResponseEntity.ok(tickets);
 	}
 	
 	@GetMapping("ticket/{id}")

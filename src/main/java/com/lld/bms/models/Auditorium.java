@@ -2,12 +2,7 @@ package com.lld.bms.models;
 
 import java.util.List;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +20,9 @@ public class Auditorium extends BaseModel {
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
 	private List<AudiFeature> features;
+
+	@ManyToOne
+	private Theatre theatre;
 
 	public String getName() {
 		return name;
@@ -66,4 +64,11 @@ public class Auditorium extends BaseModel {
 		this.features = features;
 	}
 
+	public Theatre getTheatre() {
+		return theatre;
+	}
+
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
+	}
 }
